@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand" style={{ color: 'white' }}>
+      <div className="navbar-brand" style={{ color: 'white' }} onClick={() => navigate('/')}>
         Shopify
       </div>
       <div className="navbar-links">
