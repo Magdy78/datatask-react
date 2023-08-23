@@ -1,0 +1,27 @@
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  grid-row-start: 3; /* Align the footer to the third grid row */
+  grid-row-end: 4;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}

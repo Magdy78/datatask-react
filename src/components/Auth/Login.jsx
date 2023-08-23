@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
 import './Auth.css';
 import axiosInstance from '../services/axiosInstance.js';
-//import { useHistory } from 'react-router-dom'; // Import useHistory
 import { useNavigate } from 'react-router-dom'; 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
+  const [error, setError] = useState('');
 
-  const handleSubmit = async e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await axiosInstance.post('/login', { email, password });
-      setIsLoggedIn(true);
-      console.log('Login response:', response.data);
-     navigate('/data');
-
-
+      const response = await axiosInstance.get('/users');
+      const matchingUser = response.users.find(user => user.email === email && user.password === password);
+  
+      if (matchingUser) {
+        // Successful login, store user data in localStorage
+        localStorage.setItem('userData', JSON.stringify(matchingUser));
+        navigate('/data');
+      } else {
+        setError('Invalid email or password');
+      }
     } catch (error) {
       console.error('Login error:', error);
-
+      setError('An error occurred during login');
     }
   };
+
 
   return (
     <div className="auth-container">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Email"
@@ -43,8 +48,9 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <button type="submit" onClick={() => navigate('/data')}>Login</button>
+        <button type="submit">Login</button>
       </form>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };

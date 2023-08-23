@@ -30,6 +30,24 @@ const Navbar = () => {
         >
           Register
         </button>
+        <button
+          className="navbar-button"
+          onClick={() => navigate('/ContactUs')}
+        >
+          Contact Us
+        </button>
+        <button
+          className="navbar-button"
+          onClick={() => navigate('/About')}
+        >
+          About Me 
+        </button>
+        <button
+          className="navbar-button"
+          onClick={() => navigate('userSettings')}
+        >
+          UserSettings 
+        </button>
       </div>
     </nav>
   );
