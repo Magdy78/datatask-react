@@ -4,7 +4,7 @@ import axiosInstance from '../services/axiosInstance';
 import './UserSettings.css';
 
 const UserSettings = () => {
-  const { userId } = useParams(); // Get the userId from the URL parameter
+  const { userId } = useParams(); 
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {

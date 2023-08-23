@@ -17,7 +17,7 @@ const Login = () => {
       const matchingUser = response.users.find(user => user.email === email && user.password === password);
   
       if (matchingUser) {
-        // Successful login, store user data in localStorage
+        
         localStorage.setItem('userData', JSON.stringify(matchingUser));
         navigate('/data');
       } else {

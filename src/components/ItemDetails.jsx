@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import the useParams hook
+import { useParams } from 'react-router-dom'; 
 import axiosInstance from './services/axiosInstance';
 import "./ItemDetails.css";
 const ItemDetails = () => {
-  const { id } = useParams(); // Use the useParams hook to get the id parameter
+  const { id } = useParams(); 
   const [itemDetails, setItemDetails] = useState(null);
 
   useEffect(() => {
